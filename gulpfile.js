@@ -12,7 +12,7 @@ const browserSync = require('browser-sync').create();
 function minhtml() {
     return gulp.src('./dev/*.html')
         .pipe(htmlmin({
-            collapseWhitespace: true
+            collapseWhitespace: false
         }))
         .pipe(gulp.dest('app'));
 }
