@@ -7,6 +7,13 @@ const imagemin = require('gulp-imagemin');
 const autoprefixer = require('gulp-autoprefixer');
 const htmlmin = require('gulp-htmlmin');
 const browserSync = require('browser-sync').create();
+const parentFolder = require('parent-folder')
+
+
+const project = parentFolder()
+const target  = `localhost/${project}/app/`
+const port    =  Math.floor(1000 + Math.random() * 9000)
+
 
 
 function minhtml() {
@@ -26,7 +33,7 @@ function optimizar() {
 //compIlaR scss dentro de css
 function style() {
     // 1. donde esta mi archivo scss
-    return gulp.src('./dev/scss/**/*.scss')
+    return gulp.src('./dev/scss/**/style.scss')
         // 2. pasar el archivo al compilador
         .pipe(sass())
         .pipe(autoprefixer({
@@ -42,16 +49,18 @@ function style() {
 function compressjs() {
     return pipeline(
         gulp.src('./dev/js/**/*.js'),
-        uglify(),
+        // uglify(),
         gulp.dest('./app/assets/js')
     );
 }
 
 function watch() {
     browserSync.init({
-        server: {
-            baseDir: './dev'
-        }
+        proxy: {
+            target: target,
+            ws: true
+        },
+        port: port
     })
     gulp.watch('./dev/scss/**/*.scss', style)
     gulp.watch('./dev/js/**/*.js', compressjs)
