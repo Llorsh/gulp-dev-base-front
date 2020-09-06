@@ -1,0 +1,8 @@
+@for $i from 1 through 50 {
+    .m-top-#{$i} {
+        margin-top: $i * 1px;
+    }
+    .m-bottom-#{$i} {
+        margin-top: $i * 1px;
+    }
+}

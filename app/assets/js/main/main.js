@@ -1,1 +1,5 @@
-console.info("Llorsh"," :D");
+(function () {
+
+    
+
+}());

@@ -1,0 +1,30 @@
+@import "forms/main.scss";
+@import "buttons/main.scss";
+@import 'margin.scss';
+
+$cols: 12;
+$padding-lr: 2%;
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.container {
+    padding-left: $padding-lr;
+    padding-right: $padding-lr;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+@for $i from 1 through $cols {
+    .cont-#{$i} {
+        width: ($i/$cols) * 100% - ($padding-lr * 2);
+        padding-left: $padding-lr;
+        padding-right: $padding-lr;
+    }
+}
+
+.content__text {
+    text-align: justify;
+}

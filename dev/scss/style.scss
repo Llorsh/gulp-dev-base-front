@@ -1,13 +1,4 @@
-body {
-    background-color: white;
-    color: #ff0000;
-    font-size: 10px;
-}
 
-h1 {
-    color: yellow;
-}
-
-main {
-    display: flex;
-}
+@import 'global/global.scss';
+@import 'mobile/main.scss';
+@import 'desktop/main.scss';

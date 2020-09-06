@@ -1,0 +1,24 @@
+$input_height: 2rem;
+
+.input {
+    display: block;
+    height: $input_height;
+    width: 100%;
+    max-width: 100%;
+}
+
+.content__input {
+    margin-bottom: $input_height;
+    span,
+    input {
+        text-transform: uppercase;
+    }
+
+    span small {
+        color: rgb(228, 18, 18);
+    }
+
+    label:nth-child(1) {
+        background-color: red;
+    }
+}
