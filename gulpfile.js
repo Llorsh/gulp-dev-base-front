@@ -63,9 +63,11 @@ function watch() {
         port: port
     })
     gulp.watch('./dev/scss/**/*.scss', style)
+    gulp.watch('./dev/images/*', optimizar)
     gulp.watch('./dev/js/**/*.js', compressjs)
-    gulp.watch('./dev/*.html').on('change', browserSync.reload)
-    gulp.watch('./dev/*.html', minhtml)
+    gulp.watch('./app/*.html').on('change', browserSync.reload)
+    gulp.watch('./app/*.php').on('change', browserSync.reload)
+    // gulp.watch('./dev/*.html', minhtml)
 }
 exports.watch = watch;
 exports.style = style;
