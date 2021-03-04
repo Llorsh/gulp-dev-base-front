@@ -61,7 +61,7 @@ function watch() {
             ws: true
         },
         port: port
-    })
+    });
     gulp.watch('./dev/scss/**/*.scss', style)
     gulp.watch('./dev/images/*', optimizar)
     gulp.watch('./dev/js/**/*.js', compressjs)
