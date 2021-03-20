@@ -7,7 +7,8 @@ const imagemin = require('gulp-imagemin');
 const autoprefixer = require('gulp-autoprefixer');
 const htmlmin = require('gulp-htmlmin');
 const browserSync = require('browser-sync').create();
-const parentFolder = require('parent-folder')
+const parentFolder = require('parent-folder');
+const concat = require('gulp-concat');
 
 
 const project = parentFolder()
@@ -27,7 +28,7 @@ function minhtml() {
 function optimizar() {
     return gulp.src('./dev/images/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('./app/assets/images'))
+        .pipe(gulp.dest('./app/dist/images'))
 }
 
 //compIlaR scss dentro de css
@@ -41,17 +42,16 @@ function style() {
         }))
         .pipe(cssnano())
         // 3. donde quiero guardar mi archivo css
-        .pipe(gulp.dest('./app/assets/css'))
+        .pipe(gulp.dest('./app/dist/css'))
         // 4. mostrar los cambios automaticamente en el navegador
         .pipe(browserSync.stream())
 }
 
 function compressjs() {
-    return pipeline(
-        gulp.src('./dev/js/**/*.js'),
-        // uglify(),
-        gulp.dest('./app/assets/js')
-    );
+    return gulp.src('./dev/js/**/*.js')
+        .pipe(concat('app.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./app/dist/js'));
 }
 
 function watch() {
